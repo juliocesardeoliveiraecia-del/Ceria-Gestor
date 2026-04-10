@@ -8,147 +8,100 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-body {
-  background: #0a0f1c;
-  color: white;
-  display: flex;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#0a0f1c;color:#fff;display:flex}
 
 /* SIDEBAR */
-.sidebar {
-  width: 240px;
-  background: #0c1324;
-  height: 100vh;
-  padding: 20px;
+.sidebar{
+  width:240px;
+  background:#0c1324;
+  height:100vh;
+  padding:20px;
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
+.logo{font-size:20px;color:#4da3ff;margin-bottom:30px}
+.menu div{
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-bottom:10px;
 }
-
-.logo img {
-  width: 40px;
-}
-
-.logo span {
-  font-weight: 600;
-  color: #4da3ff;
-}
-
-.menu div {
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.menu div:hover {
-  background: rgba(77,163,255,0.1);
-}
+.menu div:hover{background:rgba(77,163,255,.1)}
 
 /* MAIN */
-.main {
-  flex: 1;
-  padding: 20px;
-}
-
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+.main{flex:1;padding:20px}
 
 /* DASHBOARD */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 15px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
 }
-
-.card {
-  background: #121a2f;
-  padding: 20px;
-  border-radius: 12px;
+.card{
+  background:#121a2f;
+  padding:20px;
+  border-radius:10px;
 }
-
-.card h2 {
-  margin-top: 10px;
-}
-
-/* ALERT */
-.alert {
-  margin-top: 15px;
-  background: #1c253b;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-button {
-  background: orange;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: white;
+.alert{
+  margin-top:15px;
+  background:#1c253b;
+  padding:15px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
 }
 
 /* PDV */
-.pdv {
-  display: none;
+.pdv{display:none}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
+.product{
+  background:#16213a;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  text-align:center;
+}
+.product:hover{background:#1f2c4d}
+
+.cart{
+  margin-top:20px;
+  background:#121a2f;
+  padding:15px;
+  border-radius:10px;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-  gap: 10px;
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:5px;
 }
 
-.product {
-  background: #16213a;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
+button{
+  background:orange;
+  border:none;
+  padding:8px;
+  border-radius:6px;
+  cursor:pointer;
+  color:#fff;
 }
 
-.product:hover {
-  background: #1f2c4d;
+/* MOBILE */
+@media(max-width:800px){
+  .sidebar{display:none}
 }
-
-.cart {
-  margin-top: 20px;
-  background: #121a2f;
-  padding: 15px;
-  border-radius: 10px;
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="sidebar">
-  <div class="logo">
-    <img src="https://via.placeholder.com/40" />
-    <span>CERIA</span>
-  </div>
-
+  <div class="logo">CERIA</div>
   <div class="menu">
-    <div onclick="showScreen('dashboard')">Dashboard</div>
-    <div onclick="showScreen('pdv')">Caixa / PDV</div>
+    <div onclick="show('dashboard')">Dashboard</div>
+    <div onclick="show('pdv')">PDV / Caixa</div>
   </div>
 </div>
 
@@ -156,16 +109,13 @@ button {
 
 <!-- DASHBOARD -->
 <div id="dashboard">
-  <div class="header">
-    <h2>Dashboard</h2>
-  </div>
+  <h2>Dashboard</h2>
 
   <div class="cards">
     <div class="card">
       <p>Vendas hoje</p>
       <h2 id="sales">R$ 0</h2>
     </div>
-
     <div class="card">
       <p>Pedidos</p>
       <h2 id="orders">0</h2>
@@ -173,60 +123,89 @@ button {
   </div>
 
   <div class="alert">
-    <span>Você pode aumentar suas vendas com combos</span>
-    <button onclick="alert('Sugestão ativada')">Ativar</button>
+    <span>Ative campanhas para vender mais</span>
+    <button>Ativar</button>
   </div>
 </div>
 
 <!-- PDV -->
 <div id="pdv" class="pdv">
-  <h2>Caixa / PDV</h2>
+  <h2>PDV / Caixa</h2>
 
   <div class="products">
-    <div class="product" onclick="addItem('Hambúrguer',20)">🍔 Hambúrguer</div>
-    <div class="product" onclick="addItem('Refrigerante',6)">🥤 Refri</div>
-    <div class="product" onclick="addItem('Batata',10)">🍟 Batata</div>
+    <div class="product" onclick="add('Hambúrguer',20)">🍔 Hambúrguer</div>
+    <div class="product" onclick="add('Refrigerante',6)">🥤 Refri</div>
+    <div class="product" onclick="add('Batata',10)">🍟 Batata</div>
   </div>
 
   <div class="cart">
     <h3>Pedido</h3>
-    <div id="cartItems"></div>
+    <div id="cart"></div>
     <h3>Total: R$ <span id="total">0</span></h3>
-    <button onclick="checkout()">Finalizar Venda</button>
+    <button onclick="finish()">Finalizar</button>
   </div>
 </div>
 
 </div>
 
 <script>
-let total = 0;
-let orders = 0;
+let cart=[];
+let total=0;
+let orders=0;
 
-function showScreen(screen) {
-  document.getElementById('dashboard').style.display = 'none';
-  document.getElementById('pdv').style.display = 'none';
-  document.getElementById(screen).style.display = 'block';
+function show(screen){
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('pdv').style.display='none';
+  document.getElementById(screen).style.display='block';
 }
 
-function addItem(name, price) {
-  total += price;
-  document.getElementById('total').innerText = total;
+function add(name,price){
+  const item=cart.find(i=>i.name===name);
 
-  const item = document.createElement('div');
-  item.innerText = name + " - R$" + price;
-  document.getElementById('cartItems').appendChild(item);
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({name,price,qty:1});
+  }
+
+  renderCart();
 }
 
-function checkout() {
+function remove(name){
+  cart=cart.filter(i=>i.name!==name);
+  renderCart();
+}
+
+function renderCart(){
+  const el=document.getElementById('cart');
+  el.innerHTML='';
+  total=0;
+
+  cart.forEach(item=>{
+    total+=item.price*item.qty;
+
+    el.innerHTML+=`
+      <div class="cart-item">
+        <span>${item.name} x${item.qty}</span>
+        <button onclick="remove('${item.name}')">X</button>
+      </div>
+    `;
+  });
+
+  document.getElementById('total').innerText=total;
+}
+
+function finish(){
+  if(cart.length===0)return alert("Sem itens");
+
   orders++;
-  document.getElementById('orders').innerText = orders;
-  document.getElementById('sales').innerText = "R$ " + total;
+  document.getElementById('orders').innerText=orders;
+  document.getElementById('sales').innerText="R$ "+total;
 
-  alert("Venda finalizada!");
+  cart=[];
+  renderCart();
 
-  total = 0;
-  document.getElementById('total').innerText = 0;
-  document.getElementById('cartItems').innerHTML = "";
+  alert("Venda finalizada");
 }
 </script>
 
