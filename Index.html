@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CERIA Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #0a0f1f, #05070d);
+  color: white;
+  display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b0f1a, #05070d);
+  padding: 25px;
+  border-right: 1px solid rgba(0, 162, 255, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4da3ff;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(77,163,255,0.6);
+}
+
+.menu div {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menu div:hover {
+  background: rgba(77,163,255,0.1);
+  box-shadow: 0 0 10px rgba(77,163,255,0.3);
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  background: rgba(18, 24, 38, 0.8);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 162, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 162, 255, 0.05);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(0, 162, 255, 0.2);
+}
+
+.card p {
+  color: #9ca3af;
+}
+
+.card h2 {
+  font-size: 26px;
+  margin-top: 10px;
+}
+
+/* ALERTAS */
+.alert {
+  margin-top: 20px;
+  background: rgba(26, 34, 53, 0.8);
+  padding: 18px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.05);
+}
+
+.alert span {
+  color: #e5e7eb;
+}
+
+/* BOTÕES */
+button {
+  background: linear-gradient(135deg, #ff7a00, #ffae42);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <div class="logo">CERIA</div>
+
+  <div class="menu">
+    <div>Dashboard</div>
+    <div>Caixa</div>
+    <div>Mesas</div>
+    <div>Pedidos</div>
+    <div>Delivery</div>
+    <div>Produtos</div>
+    <div>Clientes</div>
+    <div>Campanhas</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="title">Dashboard</div>
+
+  <div class="cards">
+    <div class="card">
+      <p>Vendas hoje</p>
+      <h2>R$ 2.430</h2>
+    </div>
+
+    <div class="card">
+      <p>Ticket médio</p>
+      <h2>R$ 32</h2>
+    </div>
+
+    <div class="card">
+      <p>Pedidos</p>
+      <h2>78</h2>
+    </div>
+  </div>
+
+  <div class="alert">
+    <span>🔥 Você perdeu R$ 320 sem upsell hoje</span>
+    <button onclick="alert('Upsell ativado!')">Ativar</button>
+  </div>
+
+  <div class="alert">
+    <span>📢 12 clientes podem voltar hoje</span>
+    <button onclick="alert('Campanha enviada!')">Reativar</button>
+  </div>
+
+</div>
+
+</body>
+</html>
